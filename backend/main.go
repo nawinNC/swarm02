@@ -33,5 +33,5 @@ func main() {
 	r.Get("/", handler)
 
 	fmt.Println("Go backend started!")
-	log.Fatal(http.ListenAndServe(":80", r))
+	log.Fatal(http.ListenAndServe(":90", r))
 }
