@@ -5,9 +5,7 @@ services:
     networks: 
     - webproxy 
     logging:
-      driver: json-file 
-    volumes: 
-      - db_data:/var/lib/postgresql/data
+      driver: json-file
     container_name: giteaapp
     deploy: 
       replicas: 1 
