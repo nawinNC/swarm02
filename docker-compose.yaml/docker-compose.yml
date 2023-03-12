@@ -1,21 +1,21 @@
 version: '3.3' 
 services:
-  web: 
+  test-volume:
     image: nawinnc/gitea:0555
     networks: 
     - webproxy 
     logging:
-      driver: json-file
-    container_name: giteaapp
+      driver: json-file 
+
     deploy: 
       replicas: 1 
       labels: 
         - traefik.docker.network=webproxy
         - traefik.enable=true
-        - traefik.http.routers.spcn15gitea-https.entrypoints=websecure 
-        - traefik.http.routers.spcn15gitea-https.rule=Host("spcn15gitea.xops.ipv9.xyz")
-        - traefik.http.routers.spcn15gitea-https.tls.certresolver=default
-        - traefik.http.services.spcn15gitea.loadbalancer.server.port=3000 
+        - traefik.http.routers.${APPNAME}-https.entrypoints=websecure
+        - traefik.http.routers.${APPNAME}-https.rule=Host("${APPNAME}.xops.ipv9.me")
+        - traefik.http.routers.${APPNAME}-https.tls.certresolver=default
+        - traefik.http.services.${APPNAME}.loadbalancer.server.port=3000
       resources: 
         reservations: 
           cpus: '0.1'
